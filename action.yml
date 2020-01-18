@@ -20,3 +20,6 @@ runs:
     - '--verbose'
     - '--platform'
     - ${{ inputs.platform }}
+branding:
+  icon: 'cpu'
+  color: 'blue'
