@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# Wrapper script to wrap mos tool which lacks path argument to mos.yml.
+
+# Default values of arguments
+MOS_YML_PATH="."
+OTHER_ARGUMENTS=""
+
+# Loop through arguments and process them
+for arg in "$@"
+do
+    case $arg in
+        --mos-yml-path)
+        MOS_YML_PATH="$2"
+        shift # Remove argument name from processing
+        shift # Remove argument value from processing
+        ;;
+        --mos-yml-path=*)
+        MOS_YML_PATH="${arg#*=}"
+        shift # Remove --mos-yml-path= from processing
+        ;;
+        *)
+        OTHER_ARGUMENTS="$OTHER_ARGUMENTS $1"
+        shift # Remove generic argument from processing
+        ;;
+    esac
+done
+
+cd $MOS_YML_PATH
+/root/.mos/bin/mos $OTHER_ARGUMENTS

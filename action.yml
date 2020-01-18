@@ -1,0 +1,21 @@
+name: Build Mongoose OS firmware
+description: Builds a Mongoose OS firmware for given target
+inputs:
+  mos-yml-path:
+    description: Path to mos.yml file
+    required: true
+    default: .
+  platform:
+    description: The platform to build firmware for
+    required: true
+    default: esp8266
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - --mos-yml-path
+    - ${{ inputs.mos-yml-path }}
+    - build
+    - --verbose
+    - --platform
+    - ${{ inputs.platform }}
