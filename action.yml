@@ -1,5 +1,6 @@
 name: 'Build Mongoose OS firmware'
 description: 'Builds a Mongoose OS firmware for given target'
+author: 'dea82'
 inputs:
   mos-yml-path:
     description: 'Path to mos.yml file'
